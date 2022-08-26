@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            /* 表格及单元格的宽度取决于其包含的内容。 */
+            table-layout: auto;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>成绩表</caption>
+        <thead>
+            <th></th>
+            <th>小红</th>
+            <th>小明</th>
+            <th>小颖</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th>数学</th>
+                <td>61</td>
+                <td>72</td>
+                <td>82</td>
+            </tr>
+            <tr>
+                <th>语文</th>
+                <td>62</td>
+                <td>74</td>
+                <td>82</td>
+            </tr>
+            <tr>
+                <th>英语</th>
+                <td>64</td>
+                <td>86</td>
+                <td>78</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>总分</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

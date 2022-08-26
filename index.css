@@ -1,0 +1,6 @@
+.foo {
+    /* css.reset文件中这句必加 */
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    white-space: nowrap;
+}
