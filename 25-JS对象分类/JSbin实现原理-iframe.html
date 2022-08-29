@@ -1,0 +1,37 @@
+<!-- http://haoqiao.me/2016/01/12/my-own-jsfiddle.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10">这里写 HTML</textarea>
+    <textarea name="" id="" cols="30" rows="10">这里写 CSS</textarea>
+    <textarea name="" id="" cols="30" rows="10">这里写 JS</textarea>
+    <textarea name="" id="" cols="30" rows="10">这里是 console 面板</textarea>
+    <!--iframe 标签是 output 面板，用于展示 HTML 页面效果 -->
+    <iframe id="iframe" src="" frameborder="1"></iframe>
+
+    <script type="text/javascript">
+        // 展示 HTML、CSS、JS 效果
+        iframe_doc = iframe.contentDocument;
+        iframe_doc.open();
+        iframe_doc.write("<div>在这里展示 HTML、CSS、JS 效果</div><script>" + "console.log('控制台')" + "<\/script>");
+        iframe_doc.close();
+
+        // 【jsbin 源码分析】解析 JS 代码输出到 console 面板
+        // jsbin 的控制台是简陋的，无法呈现树形结构。（其实还是 Chrome 的调试工具好）
+        // 1. AST（抽象语法树） 拆解 JS 语句`console.log('打印到控制台的信息')`
+        // 2. 根据字符串分析出输出结果（数据结构）
+        // 3. 将输出结果（有特定数据结构的对象）渲染到 console 面板
+        // 整个过程就是用 JS 语言写的 JS 的解释器。
+    </script>
+</body>
+
+</html>

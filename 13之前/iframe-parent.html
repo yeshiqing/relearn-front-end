@@ -1,0 +1,26 @@
+<!-- Alternative text for iframe -->
+<!-- https://stackoverflow.com/questions/8252676/alternate-text-for-iframes -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe id="iframe" src="iframe-content.html" frameborder="0" alt="这个页面没有加载成功，显示这段信息"></iframe>
+    <script type="text/javascript">
+        iframe = document.getElementById('iframe')
+        iframeWindow = iframe.contentWindow;
+        iframeDoc = iframeWindow.document
+        iframeDoc.open();
+        iframeDoc.write(iframe.getAttribute("alt"));
+        iframeDoc.close();
+    </script>
+</body>
+
+</html>

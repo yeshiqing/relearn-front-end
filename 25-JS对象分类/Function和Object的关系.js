@@ -9,10 +9,10 @@ const PROTOTYPE_TOP = Object.prototype // 原版 JS 世界中原型链的最顶�
 const PROTONAME = '__proto__' // 原型的属性名，默认为 __proto__
 const OBJECT_ASSIGN = OBJECT.assign
 
-let F = function () { } // F 表示 Function，假设先有 Function
+let F = function () { return function () { } } // F 表示 Function，假设先有 Function
 F.prototype = new F()
 OBJECT_ASSIGN(F.prototype, {
-    apply: function apply() { },
+    apply: function apply() { return FUNCTION_PROTOTYPE.apply() },
     bind: function bind() { },
     call: function call() { },
     constructor: F,

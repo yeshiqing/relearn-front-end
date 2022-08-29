@@ -1,0 +1,25 @@
+// f1.arguments 是只读属性，无法通过 Object assign 修改 f1 的 arguments 属性。
+function f1(){}
+Object.assign(f1, {
+    [Symbol.hasInstance]() { },
+    // Function.prototype.arguments 不属于任何规范，已被弃用。请使用 ECMAScript 3 的 arguments 对象。
+    get arguments() {
+        if (this === Function.prototype) {
+            throw "TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+        }
+        /* native code */
+    },
+    set arguments(value) {
+        /* native code */
+    },
+    // Function.prototype.arguments 不属于任何规范，已被弃用。
+    get caller() {
+        if (this === Function.prototype) {
+            throw "TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+        }
+        /* native code */
+    },
+    set caller(value) {
+        /* native code */
+    }
+})

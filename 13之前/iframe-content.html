@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        console.log(this)
+        ifrm = this.contentWindow || this.contentDocument || this;
+        doc = ifrm.document
+        ifrm.document.open();
+        ifrm.document.write(this.getAttr("alt"));
+        ifrm.document.close();
+    </script>
+</body>
+
+</html>
