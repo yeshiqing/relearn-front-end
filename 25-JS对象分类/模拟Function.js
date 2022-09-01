@@ -19,7 +19,7 @@ Function = function (/*funcBody*/) {
         ${funcBody}
     })` // 必须加圆括号，这样 eval 才会返回表达式的值，否则返回 undefined。
     /**
-     * 创建一个函数 func 时，
+     * 通过函数声明或函数表达式创建一个函数 func 时，
      * JS 引擎会自动做如下事情，JS 引擎会自动做如下事情，JS 引擎会自动做如下事情：
      * 1. 配置 func 的基本属性
      * func.arguments = null
@@ -27,9 +27,9 @@ Function = function (/*funcBody*/) {
      * func.name = "func"
      * 
      * 2. 配置 func 的 prototype（箭头函数、Function.prototype 不做这一步）
-     * 2.1 func.prototype = {}
-     * 2.2 func.prototype.constructor = func
-     * 2.3 func.prototype.__proto__ = Object.prototype
+     * func.prototype = new Object()
+     * func.prototype.constructor = func
+     * func.prototype.__proto__ = Object.prototype
      * 
      * 3. 配置 func 的原型 
      * func.__proto__ = FUNCTION.prototype
@@ -42,23 +42,25 @@ Function.name = 'Function' // 属性描述符。{value: 'Function', writable: fa
 
 /**
  * 其他函数的 prototype 都是对象，唯独 Function.prototype 是函数。
- * 这个函数必须用「箭头函数」语法或 Function.prototype.bind() 创建
+ * 这个函数必须用「箭头函数」语法创建（Function.prototype.bind 会留下 bind 名字）
  * 因为只有这样这个函数才没有 prototype 属性。
  */
-Function.prototype = () => { return undefined }
+Function.prototype = () => { }
 
 Function.prototype.constructor = Function
-Function.prototype.apply = function () { }
-Function.prototype.bind = function () { }
-Function.prototype.call = function () { }
+Function.prototype.apply = function () { } // TODO
+Function.prototype.bind = function () { } // TODO
+Function.prototype.call = function () { } // TODO
 Function.prototype.length = 0
-Function.prototype.name = ""
-Function.prototype.toString = function () { }
+Function.prototype.name = "" // 该属性值需要调整才可写入 {value: '', writable: false, enumerable: false, configurable: true}
+Function.prototype.toString = function () { } // TODO
 Object.assign(Function.prototype, {
-    // 只读属性，无法赋值
-    // [Symbol.hasInstance]() { },
-    // Function.prototype.arguments 不属于任何规范，已被弃用。请使用 ECMAScript 3 的 arguments 对象。
-    // Function.prototype.arguments 不属于任何规范，已被弃用。
+    /* 
+    只读属性，无法赋值
+    [Symbol.hasInstance]() { },
+    Function.prototype.arguments 不属于任何规范，已被弃用。请使用 ECMAScript 3 的 arguments 对象。
+    Function.prototype.caller 不属于任何规范，已被弃用。
+     */
 })
 
 // 所有函数的原型都指向 Function.prototype （Function.prototype 例外，它的原型指向 Object.prototype）

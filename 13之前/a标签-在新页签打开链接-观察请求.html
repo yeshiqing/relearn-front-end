@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在新标签页打开链接，浏览器控制台 Network 面板看不到请求 -->
+    <a href="//www.baidu.com" target="_blank">点击链接</a>
+    <div id="clickToTriggerWindowOpen">点击触发 window.open</div>
+    <script type="text/javascript">
+        clickToTriggerWindowOpen.addEventListener("click", function (e) {
+            // 用window.open在新标签页打开链接，浏览器控制台 Network 面板看不到请求
+            window.open("//www.baidu.com")
+        }, false)
+    </script>
+</body>
+
+</html>
