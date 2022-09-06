@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title> 父子元素外边距合并 </title>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            border: 1px solid black;
+        }
+
+        section {
+            margin-top: 87px;
+            margin-bottom: 13px;
+            /* 解开注释，加上 border，上边距就不合并了*/
+            /* border: 1px solid red; */
+        }
+
+        header {
+            margin-top: 87px;
+            border: 1px solid blue;
+        }
+    </style>
+
+    <section>
+        <header>上外边距 margin-top 合并 87px</header>
+    </section>
+</body>
+
+</html>

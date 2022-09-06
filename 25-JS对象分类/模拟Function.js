@@ -42,10 +42,10 @@ Function.name = 'Function' // 属性描述符。{value: 'Function', writable: fa
 
 /**
  * 其他函数的 prototype 都是对象，唯独 Function.prototype 是函数。
- * 这个函数必须用「箭头函数」语法创建（Function.prototype.bind 会留下 bind 名字）
+ * 这个函数只能用「箭头函数」语法创建，(function(){return undefined}).bind(null) 函数的 name 会变为 bound
  * 因为只有这样这个函数才没有 prototype 属性。
  */
-Function.prototype = () => { }
+Function.prototype = () => { return undefined }
 
 Function.prototype.constructor = Function
 Function.prototype.apply = function () { } // TODO

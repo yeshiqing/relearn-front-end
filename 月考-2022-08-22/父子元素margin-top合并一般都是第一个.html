@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title> 父子元素外边距合并 </title>
+</head>
+
+<body>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            border: 1px solid black;
+        }
+
+        section {
+            background: pink;
+            height: 100px;
+            margin-bottom: 80px;
+        }
+
+        .child2 {
+            margin-top: 80px;
+        }
+    </style>
+
+    <section>
+        <div class="child1">child1</div>
+        <div class="child2"></div>
+        <div class="child3">child3</div>
+    </section>
+    <p>这是一段文字。</p>
+</body>
+
+</html>

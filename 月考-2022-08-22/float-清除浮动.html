@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .fl {
+            float: left;
+            height: 50px;
+            border: 1px solid blue;
+            color: blue;
+        }
+
+        .fr {
+            float: right;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .main {
+            /* margin-top: 50px; */
+        }
+
+        body {
+            border: 1px solid black;
+        }
+
+        .container {
+            background: rgb(5, 149, 72);
+            /* border: 1px solid black; */
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="fl">我是左浮动元素</div>
+        <div class="main">
+            我是主体内容，margin-top:50px;
+        </div>
+        <div class="fr">我是右浮动元素</div>
+    </div>
+    <!--  -->
+    <p style="margin-top:30px;">
+        <span>最外层黑色边框是&lt;body&gt;元素。</span>
+        <span style="color:rgb(5, 149, 72);">绿色背景色的是父子外边距合并中的父元素，父元素应该从 body 上部开始，不应该有空隙。</span>
+    </p>
+</body>
+
+</html>

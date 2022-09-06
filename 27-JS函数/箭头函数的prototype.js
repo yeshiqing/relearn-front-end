@@ -1,8 +1,8 @@
 let fn = () => {
-    // 1. 箭头函数中的 this 并不捕获 call 和 apply
+    // 1. 箭头函数中根本没有 this，所以 this 不捕获 call 和 apply
     console.log(this === window); // true
-    // 2. 箭头函数中的 this 并不捕获 call 和 apply
-    // console.log(arguments); // 报错。x
+    // 2. 箭头函数没有 arguments
+    console.log(arguments); // 报错。
     return 1
 }
 fn.call("a") // call 无效果

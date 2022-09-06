@@ -1,4 +1,21 @@
 `
+new Function （通过函数声明和函数表达式创建的函数也是这样的结构）
+{
+	arguments: null
+	caller: null
+	length: 0
+	name: "anonymous"
+	prototype: {constructor: ƒ}
+	[[FunctionLocation]]: VM186:1
+	[[Prototype]]: ƒ ()
+	[[Scopes]]: Scopes[1]
+}
+
+new Object()
+{
+	__proto__
+}
+
 Object.prototype
 {
 	constructor: ƒ Object(),
@@ -17,7 +34,16 @@ Object.prototype
 	set __proto__: ƒ __proto__()
 }
 
-Function.prototype === Object.__proto__ === Function.__proto__
+Object.getOwnPropertyDescriptor(Function.prototype,'arguments')
+{
+	configurable: true
+	enumerable: false
+	get: ƒ ()
+	set: ƒ ()
+}
+
+
+Function.prototype === Object.__proto__ === Function.__proto__ === F.__proto__
 {
 	apply: ƒ apply(),
 	arguments: [],
@@ -36,6 +62,22 @@ Function.prototype === Object.__proto__ === Function.__proto__
 	[[FunctionLocation]]: ​,
 	[[Prototype]]: Object,
 	[[Scopes]]: Scopes[0]
+}
+
+F.prototype // 普通函数的 prototype
+{
+	constructor: ƒ ()
+	[[Prototype]]: Object
+}
+
+F
+{
+	arguments: null,
+	caller: null,
+	length: 0, // 声明时定义的形参个数
+	name: "F",
+	prototype: {constructor: F,__proto__:Object.prototype},
+	[[Prototype]]: Function.prototype,
 }
 
 Function

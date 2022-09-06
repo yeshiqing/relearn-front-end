@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>清除浮动-2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .case {
+            width: 200px;
+            background-color: yellow;
+        }
+
+        .float {
+            float: left;
+        }
+
+        .container {
+            background-color: lightblue;
+        }
+
+        .child1 {
+            height: 58px;
+            width: 100px;
+            border: 1px solid red;
+        }
+
+        .child2 {
+            /* clear: left; */
+            margin-top: 60px;
+            background: pink;
+        }
+
+        .child3 {
+            float: left;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- container 添加 clearfix 仍没有用  -->
+    <div class="container clearfix">
+        <div class="child1 float">
+            lorem ipsum
+        </div>
+        <div class="child2"> margin-top 与父元素合并60px</div>
+    </div>
+</body>
+
+</html>

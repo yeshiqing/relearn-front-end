@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title> 父子元素外边距合并 </title>
+</head>
+
+<body>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            border: 1px solid black;
+        }
+
+        section {
+            background: pink;
+            height: 100px;
+            margin-bottom: 80px;
+            /* 解开注释，加上 border，margin-bottome 就不合并了*/
+            /* border: 1px solid red; */
+        }
+
+        footer {
+            margin-bottom: 80px;
+            border: 1px solid blue;
+        }
+    </style>
+
+    <section>
+        <footer>与父元素的 margin-bottom 合并 50px</footer>
+    </section>
+    <p>这是一段文字。</p>
+</body>
+
+</html>
