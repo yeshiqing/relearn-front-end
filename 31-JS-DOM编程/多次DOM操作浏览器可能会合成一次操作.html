@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .start {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            transition: width 1s;
+        }
+
+        .end {
+            width: 200px;
+        }
+    </style>
+
+    <button id="button">点击后观察是否有动画</button>
+    <div id="test"></div>
+    <script type="text/javascript">
+        button.onclick = (event) => {
+            test.classList.add('start')
+            /* 
+                这句话看似无用，但它会触发渲染。
+                在没有这句话之前，我们是看不到动画的，因为浏览器将两次DOM操作合并成了一次。
+                有了这句话，为了获取元素content的宽度，之前必须将元素渲染，
+                于是浏览器就不能将上下两次的 DOM 操作合成一次。
+                于是我们就看到了动画。
+             */
+            // test.clientWidth
+            test.classList.add('end')
+        }
+    </script>
+
+</body>
+
+</html>

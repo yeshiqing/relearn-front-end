@@ -1,15 +1,16 @@
-// new 操作符进一步简化代码
-function Square(width) {
-    this.width = width
-}
-Object.assign(Square.prototype, {
+// class 引入更多概念
+class Square {
+    width = 0
+    constructor(width) {
+        this.width = width
+    }
     getArea() {
         return this.width * this.width
-    },
+    }
     getLength() {
         return this.width * 4
     }
-})
+}
 
 let square1 = new Square(5)
 console.log(square1)

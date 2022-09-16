@@ -10,7 +10,9 @@ const sumFunc = new Function('a', 'b', 'return a + b');
 */
 
 // 二、代码实现
-// 备份 Function
+// C++ 创建好，放在运行环境里，JS引擎的内部代码，外部无法访问。方方老师认为先有 Function 后有 Object，是 Function 构造出了 Object。
+const OBJECT = Object
+// 备份 Function。实际上是运行环境创建了 Function，当无法通过代码实现时，就照搬浏览器创建的 Function
 const FUNCTION = Function
 // JS 世界创建 Function 的伪代码。先实现接受一个参数的形式。
 Function = function (/*funcBody*/) {
@@ -26,10 +28,10 @@ Function = function (/*funcBody*/) {
      * func.caller = null
      * func.name = "func"
      * 
-     * 2. 配置 func 的 prototype（箭头函数、Function.prototype 不做这一步）
-     * func.prototype = new Object()
+     * 2. 配置 func 的 prototype（箭头函数不做这一步）
+     * func.prototype = new OBJECT()
+     * func.prototype.__proto__ = Object.prototype // new 操作符自动做这步
      * func.prototype.constructor = func
-     * func.prototype.__proto__ = Object.prototype
      * 
      * 3. 配置 func 的原型 
      * func.__proto__ = FUNCTION.prototype
@@ -41,19 +43,20 @@ Function.length = 1 // 默认为 1
 Function.name = 'Function' // 属性描述符。{value: 'Function', writable: false, enumerable: false, configurable: true}
 
 /**
- * 其他函数的 prototype 都是对象，唯独 Function.prototype 是函数。
- * 这个函数只能用「箭头函数」语法创建，(function(){return undefined}).bind(null) 函数的 name 会变为 bound
- * 因为只有这样这个函数才没有 prototype 属性。
+ * Function.prototype 需要满足如下条件：
+ * 1. typeof Function.prototype === 'function'
+ * 2. Function.prototype instanceof Function === false
+ * 它的本质是实现了[[Call]]方法的普通对象。这个对象由运行环境创建。我们无法人为创建满足要求的对象，因为[[Call]]是无法设置的，运行环境没有暴露这样的API，我们无法将普通对象变为函数。
  */
-Function.prototype = () => { return undefined }
+Function.prototype = FUNCTION.prototype
 
 Function.prototype.constructor = Function
-Function.prototype.apply = function () { } // TODO
-Function.prototype.bind = function () { } // TODO
-Function.prototype.call = function () { } // TODO
+Function.prototype.apply = FUNCTION.apply
+Function.prototype.bind = FUNCTION.bind
+Function.prototype.call = FUNCTION.call
 Function.prototype.length = 0
 Function.prototype.name = "" // 该属性值需要调整才可写入 {value: '', writable: false, enumerable: false, configurable: true}
-Function.prototype.toString = function () { } // TODO
+Function.prototype.toString = FUNCTION.toString
 Object.assign(Function.prototype, {
     /* 
     只读属性，无法赋值
@@ -74,20 +77,20 @@ Function.prototype.__proto__ = Object.prototype
  */
 Function.__proto__ = Function.prototype
 
-
-// 测试用例1：new 操作，参数为方法体的字符串形式，产生一个函数
+/**
+ * 测试用例1：new 操作，参数为方法体的字符串形式，产生一个函数
+ * 
+ * 以下步骤在 new Function() 里面已自动完成
+ * 1. f.prototype = new OBJECT()
+ * 2. f.prototype.__proto__ = Object.prototype
+ * 3. f.prototype.constructor = f
+ * 4. f.__proto__ = FUNCTION.prototype
+ */
 let f = new Function('let x = 1;return x;');
 console.dir(f)
-/**
- * 以下步骤在 new Function() 里面已自动完成
- * 1. f.prototype.constructor = f
- * 2. f.prototype.__proto__ = Object.prototype
- * 3. f.__proto__ = FUNCTION.prototype
- */
 
 // 测试用例2：检测函数的原型是什么？
 function f2() { }
 console.dir(f2)
 console.log(f2.__proto__ === Function.prototype) // false
 console.log(f2.__proto__ === FUNCTION.prototype) // true
-
