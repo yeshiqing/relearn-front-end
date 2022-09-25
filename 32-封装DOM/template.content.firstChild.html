@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#avoiding_documentfragment_pitfall -->
+</head>
+
+<body>
+    <div id="container"></div>
+    <template id="template"><div>Click me</div></template>
+
+    <script type="text/javascript">
+        const container = document.getElementById("container");
+        const template = document.getElementById("template");
+        // const template = document.createElement('template')
+        // template.innerHTML = `<div>Click me</div>`
+
+        function clickHandler(event) {
+            event.target.append(" — Clicked this div");
+        }
+
+        console.log(template.content.firstChild) // 文本节点
+        console.log(template.content.firstElementChild); // 元素节点
+        const firstClone = template.content.cloneNode(true);
+        firstClone.addEventListener("click", clickHandler);
+        container.appendChild(firstClone);
+
+        const secondClone = template.content.firstElementChild.cloneNode(true);
+        secondClone.addEventListener("click", clickHandler);
+        container.appendChild(secondClone);
+    </script>
+</body>
+
+</html>

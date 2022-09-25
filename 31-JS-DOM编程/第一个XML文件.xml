@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+<foo>
+  Here is a CDATA section: <![CDATA[ < > & ]]> with all kinds of unescaped text.
+</foo>
+  <name>RUNOOB</name>
+  <url>https://www.runoob.com</url>
+  <logo>runoob-logo.png</logo>
+  <desc>编程学习网站</desc>
+</site>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+  </head>
+  <body>
+    <template id="template1"><div>click me</div></template>
+    <template id="template2">
+      <div>click me</div>
+    </template>
+    <script type="text/javascript">
+      console.log(template1.content.firstChild); // 元素节点 innerHTML 属性为"<div>click me</div>"
+      console.log(template2.content.firstChild); // 文本节点，textContent 属性为回车和空格
+    </script>
+  </body>
+</html>

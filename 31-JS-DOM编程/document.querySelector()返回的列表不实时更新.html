@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li id="firstLi">
+            <div>0</div>
+            <div>1</div>
+        </li>
+        <li>
+            <div>2</div>
+        </li>
+        <li>
+            <div>3</div>
+        </li>
+        <li>
+            <div>4</div>
+        </li>
+        <li>
+            <div>5</div>
+        </li>
+        <li>
+            <div>6</div>
+        </li>
+        <li>
+            <div>7</div>
+        </li>
+        <li>
+            <div>8</div>
+        </li>
+        <li>
+            <div>9</div>
+        </li>
+        <li>
+            <div>10</div>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        let htmlCollection = firstLi.children; // 返回 HTMLCollection，2 个，会实时更新
+        console.log(htmlCollection);
+        let nodeList = document.querySelectorAll('div')
+        console.log(nodeList); // 返回 NodeList，11 个，元素从 DOM 中移除不会实时更新
+        let div = document.querySelector('div')
+        div.className = "ysq" // 元素属性变化，NodeList 会更新，但元素从 DOM 中移除， NodeList 不会更新。
+        div.remove()
+        console.log(nodeList); // 虽然删除了，但还是 11 个
+        console.log(htmlCollection); // 1 个，元素从 DOM 中移除 HTMLCollection 会实时更新
+        let nodeList2 = document.querySelectorAll('div')
+        console.log(nodeList2); // 10 个
+    </script>
+</body>
+
+</html>

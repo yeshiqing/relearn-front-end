@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>W3Schools Internal Note</h1>
+    <div>
+        <b>To:</b> <span id="to"></span><br />
+        <b>From:</b> <span id="from"></span><br />
+        <b>Message:</b> <span id="message"></span>
+    </div>
+    <!-- <?xml version="1.0" encoding="ISO-8859-1"?>
+    <note>
+        <to>Tove</to>
+        <from>Jani</from>
+        <heading>Reminder</heading>
+
+        <b o d y>Don't forget me this weekend!</b o d y>
+    </note> -->
+    <script type="text/javascript">
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "https://www.runoob.com/try/xml/note.xml", false);
+        // 是不是因为跨域啊，无法 send ??
+        // 在这里调用控制台，可以 send
+        // https://www.runoob.com/try/try.php?filename=tryxml_parsertest
+        xmlhttp.send();
+        xmlDoc = xmlhttp.responseXML;
+
+        document.getElementById("to").innerHTML =
+            xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+        document.getElementById("from").innerHTML =
+            xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
+        document.getElementById("message").innerHTML =
+            xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
+    </script>
+</body>
+
+</html>
