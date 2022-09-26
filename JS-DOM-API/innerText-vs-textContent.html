@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Source element:</h3>
+    <p id="source">
+        <style>
+            #source {
+                color: red;
+            }
+
+            #text {
+                text-transform: uppercase;
+            }
+        </style>
+        <span id="text">
+            Take a look at<br />
+            how this text<br />
+            is interpreted below.
+        </span>
+        <span style="display:none">HIDDEN TEXT</span>
+    </p>
+    <h3>Result of textContent:</h3>
+    <textarea id="textContentOutput" rows="6" cols="30" readonly>…</textarea>
+    <h3>Result of innerText:</h3>
+    <textarea id="innerTextOutput" rows="6" cols="30" readonly>…</textarea>
+
+    <script type="text/javascript">
+        const source = document.getElementById("source");
+        const textContentOutput = document.getElementById("textContentOutput");
+        const innerTextOutput = document.getElementById("innerTextOutput");
+
+        textContentOutput.value = source.textContent;
+        innerTextOutput.value = source.innerText;
+    </script>
+</body>
+
+</html>
