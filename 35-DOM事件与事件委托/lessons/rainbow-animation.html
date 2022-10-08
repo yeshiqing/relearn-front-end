@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="rainbow.css">
+    <title>rainbow animation</title>
+</head>
+
+<body>
+    <div class="x level1">
+        <div class="x level2">
+            <div class="x level3">
+                <div class="x level4">
+                    <div class="x level5">
+                        <div class="x level6">
+                            <div class="x level7">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const level1 = document.querySelector(".level1")
+        const level2 = document.querySelector(".level2")
+        const level3 = document.querySelector(".level3")
+        const level4 = document.querySelector(".level4")
+        const level5 = document.querySelector(".level5")
+        const level6 = document.querySelector(".level6")
+        const level7 = document.querySelector(".level7")
+
+        let n = 0
+        let fn_bubblePhase = (e) => {
+            const t = e.currentTarget
+            setTimeout(() => {
+                t.classList.remove("x")
+            }, n * 500)
+            n++
+            console.log(`${n}: ${t.className}`)
+        }
+        let i = 7
+        let fn_capturePhase = (e) => {
+            const t = e.currentTarget
+            setTimeout(() => {
+                t.classList.add("x")
+            }, i * 500)
+            i++
+            console.log(`${i}: ${t.className}`)
+        }
+        // 以下排序按函数的执行顺序
+        level1.addEventListener("click", fn_capturePhase, true)
+        level2.addEventListener("click", fn_capturePhase, true)
+        level3.addEventListener("click", fn_capturePhase, true)
+        level4.addEventListener("click", fn_capturePhase, true)
+        level5.addEventListener("click", fn_capturePhase, true)
+        level6.addEventListener("click", fn_capturePhase, true)
+        level7.addEventListener("click", fn_capturePhase, true)
+        level7.addEventListener("click", fn_bubblePhase)
+        level6.addEventListener("click", fn_bubblePhase)
+        level5.addEventListener("click", fn_bubblePhase)
+        level4.addEventListener("click", fn_bubblePhase)
+        level3.addEventListener("click", fn_bubblePhase)
+        level2.addEventListener("click", fn_bubblePhase)
+        level1.addEventListener("click", fn_bubblePhase)
+    </script>
+</body>
+
+</html>

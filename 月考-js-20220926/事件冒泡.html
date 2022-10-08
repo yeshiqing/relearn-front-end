@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="parent">
+        asdf
+        <div class="bottom">123123123</div>
+        asdf
+    </div>
+    <script type="text/javascript">
+
+        let div = document.querySelector('div.bottom')
+        let divP = document.querySelector('.parent')
+        div.onclick = function (e) {
+            console.log('div')
+        }
+        divP.onclick = function (e) {
+            console.log('divP');
+        }   
+    </script>
+
+</body>
+
+</html>

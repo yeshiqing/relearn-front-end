@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>不能给文本节点绑定事件监听</title>
+</head>
+
+<body>
+    <div> text <span>i am span</span></div>
+    <script type="text/javascript">
+        let div = document.querySelector("div")
+        let textNode = div.firstChild
+        console.log(textNode.nodeType); // 9 表示文本节点
+        textNode.addEventListener("click", () => { console.log("bubbling phase") })
+        textNode.addEventListener("click", () => { console.log("capture phase"); }, true)
+        textNode.addEventListener("mousemove", () => { console.log("textNode mousemove"); }, true)
+    </script>
+</body>
+
+</html>

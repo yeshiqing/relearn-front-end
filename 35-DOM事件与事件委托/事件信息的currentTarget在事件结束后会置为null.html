@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>事件信息的currentTarget在事件结束后会置为null</title>
+</head>
+
+<body>
+    <div><span>text</span></div>
+    <script type="text/javascript">
+        let div = document.querySelector("div")
+        div.addEventListener("click", (e) => {
+            console.log(e.target); // span
+            console.log(e.currentTarget); // div
+            setTimeout(() => {
+                console.log(e.target); // span
+                console.log(e.currentTarget) // null
+            }, 0)
+        }, true)
+    </script>
+</body>
+
+</html>

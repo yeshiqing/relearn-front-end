@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>target自身也有捕获和冒泡</title>
+</head>
+
+<body>
+    <div> text <span>i am span</span></div>
+    <script type="text/javascript">
+        let div = document.querySelector("div")
+        let span = document.querySelector("span")
+        span.addEventListener("click", () => { console.log("span bubbling phase") })
+        span.addEventListener("click", () => { console.log("span capture phase"); }, true)
+        div.onclick = () => { console.log("div bubbling phase"); }
+        div.addEventListener("click", () => { console.log("div capture phase"); }, true)
+    </script>
+</body>
+
+</html>
