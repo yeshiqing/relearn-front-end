@@ -36,7 +36,7 @@
         const level7 = document.querySelector(".level7")
 
         let n = 0
-        let fn_bubblePhase = (e) => {
+        let removeX = (e) => {
             const t = e.currentTarget
             setTimeout(() => {
                 t.classList.remove("x")
@@ -45,7 +45,7 @@
             console.log(`${n}: ${t.className}`)
         }
         let i = 7
-        let fn_capturePhase = (e) => {
+        let addX = (e) => {
             const t = e.currentTarget
             setTimeout(() => {
                 t.classList.add("x")
@@ -54,20 +54,20 @@
             console.log(`${i}: ${t.className}`)
         }
         // 以下排序按函数的执行顺序
-        level1.addEventListener("click", fn_capturePhase, true)
-        level2.addEventListener("click", fn_capturePhase, true)
-        level3.addEventListener("click", fn_capturePhase, true)
-        level4.addEventListener("click", fn_capturePhase, true)
-        level5.addEventListener("click", fn_capturePhase, true)
-        level6.addEventListener("click", fn_capturePhase, true)
-        level7.addEventListener("click", fn_capturePhase, true)
-        level7.addEventListener("click", fn_bubblePhase)
-        level6.addEventListener("click", fn_bubblePhase)
-        level5.addEventListener("click", fn_bubblePhase)
-        level4.addEventListener("click", fn_bubblePhase)
-        level3.addEventListener("click", fn_bubblePhase)
-        level2.addEventListener("click", fn_bubblePhase)
-        level1.addEventListener("click", fn_bubblePhase)
+        level1.addEventListener("click", addX, true)
+        level2.addEventListener("click", addX, true)
+        level3.addEventListener("click", addX, true)
+        level4.addEventListener("click", addX, true)
+        level5.addEventListener("click", addX, true)
+        level6.addEventListener("click", addX, true)
+        level7.addEventListener("click", addX, true)
+        level7.addEventListener("click", removeX)
+        level6.addEventListener("click", removeX)
+        level5.addEventListener("click", removeX)
+        level4.addEventListener("click", removeX)
+        level3.addEventListener("click", removeX)
+        level2.addEventListener("click", removeX)
+        level1.addEventListener("click", removeX)
     </script>
 </body>
 
