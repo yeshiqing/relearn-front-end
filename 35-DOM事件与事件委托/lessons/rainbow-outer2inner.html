@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="rainbow.css">
+    <title>rainbow outer to inner</title>
+</head>
+
+<body>
+    <div class="x level1">
+        <div class="x level2">
+            <div class="x level3">
+                <div class="x level4">
+                    <div class="x level5">
+                        <div class="x level6">
+                            <div class="x level7">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const level1 = document.querySelector(".level1")
+        const level2 = document.querySelector(".level2")
+        const level3 = document.querySelector(".level3")
+        const level4 = document.querySelector(".level4")
+        const level5 = document.querySelector(".level5")
+        const level6 = document.querySelector(".level6")
+        const level7 = document.querySelector(".level7")
+
+        let n = 1
+        let removeX = (e) => {
+            const t = e.currentTarget
+            setTimeout(() => {
+                t.classList.remove("x")
+            }, n * 500)
+            n++
+            console.log(`${n}: ${t.className}`)
+        }
+        let addX = (e) => {
+            const t = e.currentTarget
+            setTimeout(() => {
+                t.classList.add("x")
+            }, n * 500)
+            n++
+            console.log(`${n}: ${t.className}`)
+        }
+        // 以下排序按函数的执行顺序
+        level1.addEventListener("click", removeX, true)
+        level2.addEventListener("click", removeX, true)
+        level3.addEventListener("click", removeX, true)
+        level4.addEventListener("click", removeX, true)
+        level5.addEventListener("click", removeX, true)
+        level6.addEventListener("click", removeX, true)
+        level7.addEventListener("click", removeX, true)
+        level7.addEventListener("click", addX)
+        level6.addEventListener("click", addX)
+        level5.addEventListener("click", addX)
+        level4.addEventListener("click", addX)
+        level3.addEventListener("click", addX)
+        level2.addEventListener("click", addX)
+        level1.addEventListener("click", (e) => {
+            addX(e)
+            n = 1
+        })
+    </script>
+</body>
+
+</html>
