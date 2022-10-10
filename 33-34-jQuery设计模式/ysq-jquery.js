@@ -12,7 +12,7 @@ window.$ = window.jQuery = function (selectorOrArray) {
     })
     return api
 }
-jQuery.prototype = {
+jQuery.fn = jQuery.prototype = {
     find(selector) {
         let array = []
         this.each((ele, i) => {
@@ -42,8 +42,7 @@ jQuery.prototype = {
         return this
     },
     on(eventName, selector, fn) {
-        let elements = this.elements
-        elements.forEach((eleDelegator, i) => {
+        this.each((eleDelegator, i) => {
             eleDelegator.addEventListener(eventName, (e) => {
                 // 1. 递归找到匹配选择器的委托元素
                 let ele = e.target // 委托元素（委托自己的事件给祖先元素） delegated

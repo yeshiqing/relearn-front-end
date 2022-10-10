@@ -43,13 +43,10 @@
     </div>
     <script src="ysq-jquery.js"></script>
     <script type="text/javascript">
-        let x1 = jQuery('.test').addClass('red')
-        // console.log(x1);
-        let x2 = x1.find('.child').addClass('yellow')
-        x2.each((ele, i) => {
-        }).addClass('afterTraversal')
-        let x3 = x2.end()
-        x3.print().addClass('afterPrint');
+        $('.test').on('click', 'li.selected', (e) => {
+            let i = e.target.textContent
+            console.log(`点击的是第${i}个button`)
+        })
     </script>
 </body>
 
