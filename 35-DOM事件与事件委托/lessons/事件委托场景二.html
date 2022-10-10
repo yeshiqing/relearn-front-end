@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+    </div>
+    <script type="text/javascript">
+        const COUNT_OF_BUTTONS = 100
+        setTimeout(() => {
+            // setTimeout 模拟经过一些操作后...
+            for (let i = 0; i < COUNT_OF_BUTTONS; i++) {
+                let button = document.createElement('button')
+                button.textContent = 'click' + i
+                div1.appendChild(button)
+            }
+        }, 1000)
+        div1.addEventListener('click', (e) => {
+            const t = e.target
+            if (t.tagName.toLowerCase() === 'button') {
+                console.log('button 被点击了');
+            }
+        })
+    </script>
+</body>
+
+</html>

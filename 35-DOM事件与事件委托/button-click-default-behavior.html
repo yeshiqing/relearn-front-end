@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>create custom events</title>
+</head>
+
+<body>
+    <form action="https://baidu.com">
+        <div id="div1">
+            <!-- 如果 <button> 元素在表单内，它的 click 事件的默认行为是提交（submit）表单。如果设置 type='button' 则没有默认行为。 -->
+            <!-- 如果 <button> 元素不在表单，它没有默认行为。 -->
+            <button id="button1">点击，触发默认事件</button>
+        </div>
+    </form>
+    <script type="text/javascript">
+        button1.addEventListener('jeffrey', (e) => {
+            // 解开注释，再次运行代码，点击 button
+            // e.preventDefault()
+        })
+    </script>
+</body>
+
+</html>
