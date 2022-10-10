@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.png">
+    <title>jQuery style encapulation of DOM</title>
+</head>
+
+<body>
+    <div class="test">
+        你好1
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
+    </div>
+    <div class="test">
+        你好2
+        <div class="child">child4</div>
+        <div class="child red">child5</div>
+    </div>
+    <div class="test">
+        你好3
+        <div class="child">child6</div>
+        <ul>
+            <li><button>1</button></li>
+            <li><button>2</button></li>
+            <li><button>3</button></li>
+            <li class="selected"><button>4</button></li>
+            <li class="selected"><button>5</button></li>
+            <li class="selected"><button>6</button></li>
+            <li><button>7</button></li>
+            <li><button>8</button></li>
+            <li><button>9</button></li>
+            <li><button>10</button></li>
+        </ul>
+    </div>
+    <div id="container">
+        container
+    </div>
+    <script src="ysq-jquery.js"></script>
+    <script type="text/javascript">
+        $('.test').on('click', 'li.selected', (e) => {
+            let i = e.target.textContent
+            console.log(`点击的是第${i}个button`)
+        })
+    </script>
+</body>
+
+</html>
