@@ -10,131 +10,152 @@
 </head>
 
 <body>
+    <style>
+        .spanWrapper {
+            display: inline-block;
+            width: 80%;
+            border-bottom: 1px solid red;
+        }
+    </style>
     <div id="testDiv">
-        <span class="text">I am span</span>
+        <div class="spanWrapper">
+            <span class="text">I am span</span>
+        </div>
         <ul>
-            <li><span>1</span></li>
-            <li><span>2</span></li>
-            <li><span>3</span></li>
-            <li><span>4</span></li>
-            <li><span>5</span></li>
-            <li><span>6</span></li>
-            <li><span>7</span></li>
-            <li><span>8</span></li>
-            <li><span>9</span></li>
-            <li><span>10</span></li>
-            <li><span>11</span></li>
-            <li><span>12</span></li>
-            <li><span>13</span></li>
-            <li><span>14</span></li>
-            <li><span>15</span></li>
-            <li><span>16</span></li>
-            <li><span>17</span></li>
-            <li><span>18</span></li>
-            <li><span>19</span></li>
-            <li><span>20</span></li>
-            <li><span>21</span></li>
-            <li><span>22</span></li>
-            <li><span>23</span></li>
-            <li><span>24</span></li>
-            <li><span>25</span></li>
-            <li><span>26</span></li>
-            <li><span>27</span></li>
-            <li><span>28</span></li>
-            <li><span>29</span></li>
-            <li><span>30</span></li>
-            <li><span>31</span></li>
-            <li><span>32</span></li>
-            <li><span>33</span></li>
-            <li><span>34</span></li>
-            <li><span>35</span></li>
-            <li><span>36</span></li>
-            <li><span>37</span></li>
-            <li><span>38</span></li>
-            <li><span>39</span></li>
-            <li><span>40</span></li>
-            <li><span>41</span></li>
-            <li><span>42</span></li>
-            <li><span>43</span></li>
-            <li><span>44</span></li>
-            <li><span>45</span></li>
-            <li><span>46</span></li>
-            <li><span>47</span></li>
-            <li><span>48</span></li>
-            <li><span>49</span></li>
-            <li><span>50</span></li>
-            <li><span>51</span></li>
-            <li><span>52</span></li>
-            <li><span>53</span></li>
-            <li><span>54</span></li>
-            <li><span>55</span></li>
-            <li><span>56</span></li>
-            <li><span>57</span></li>
-            <li><span>58</span></li>
-            <li><span>59</span></li>
-            <li><span>60</span></li>
-            <li><span>61</span></li>
-            <li><span>62</span></li>
-            <li><span>63</span></li>
-            <li><span>64</span></li>
-            <li><span>65</span></li>
-            <li><span>66</span></li>
-            <li><span>67</span></li>
-            <li><span>68</span></li>
-            <li><span>69</span></li>
-            <li><span>70</span></li>
-            <li><span>71</span></li>
-            <li><span>72</span></li>
-            <li><span>73</span></li>
-            <li><span>74</span></li>
-            <li><span>75</span></li>
-            <li><span>76</span></li>
-            <li><span>77</span></li>
-            <li><span>78</span></li>
-            <li><span>79</span></li>
-            <li><span>80</span></li>
-            <li><span>81</span></li>
-            <li><span>82</span></li>
-            <li><span>83</span></li>
-            <li><span>84</span></li>
-            <li><span>85</span></li>
-            <li><span>86</span></li>
-            <li><span>87</span></li>
-            <li><span>88</span></li>
-            <li><span>89</span></li>
-            <li><span>90</span></li>
-            <li><span>91</span></li>
-            <li><span>92</span></li>
-            <li><span>93</span></li>
-            <li><span>94</span></li>
-            <li><span>95</span></li>
-            <li><span>96</span></li>
-            <li><span>97</span></li>
-            <li><span>98</span></li>
-            <li><span>99</span></li>
-            <li><span>100</span></li>
+            <li><button><span>1</span></button></li>
+            <li><button><span>2</span></button></li>
+            <li><button><span>3</span></button></li>
+            <li><button><span>4</span></button></li>
+            <li><button><span>5</span></button></li>
+            <li><button><span>6</span></button></li>
+            <li><button><span>7</span></button></li>
+            <li><button><span>8</span></button></li>
+            <li><button><span>9</span></button></li>
+            <li><button><span>10</span></button></li>
+            <li><button><span>11</span></button></li>
+            <li><button><span>12</span></button></li>
+            <li><button><span>13</span></button></li>
+            <li><button><span>14</span></button></li>
+            <li><button><span>15</span></button></li>
+            <li><button><span>16</span></button></li>
+            <li><button><span>17</span></button></li>
+            <li><button><span>18</span></button></li>
+            <li><button><span>19</span></button></li>
+            <li><button><span>20</span></button></li>
+            <li><button><span>21</span></button></li>
+            <li><button><span>22</span></button></li>
+            <li><button><span>23</span></button></li>
+            <li><button><span>24</span></button></li>
+            <li><button><span>25</span></button></li>
+            <li><button><span>26</span></button></li>
+            <li><button><span>27</span></button></li>
+            <li><button><span>28</span></button></li>
+            <li><button><span>29</span></button></li>
+            <li><button><span>30</span></button></li>
+            <li><button><span>31</span></button></li>
+            <li><button><span>32</span></button></li>
+            <li><button><span>33</span></button></li>
+            <li><button><span>34</span></button></li>
+            <li><button><span>35</span></button></li>
+            <li><button><span>36</span></button></li>
+            <li><button><span>37</span></button></li>
+            <li><button><span>38</span></button></li>
+            <li><button><span>39</span></button></li>
+            <li><button><span>40</span></button></li>
+            <li><button><span>41</span></button></li>
+            <li><button><span>42</span></button></li>
+            <li><button><span>43</span></button></li>
+            <li><button><span>44</span></button></li>
+            <li><button><span>45</span></button></li>
+            <li><button><span>46</span></button></li>
+            <li><button><span>47</span></button></li>
+            <li><button><span>48</span></button></li>
+            <li><button><span>49</span></button></li>
+            <li><button><span>50</span></button></li>
+            <li><button><span>51</span></button></li>
+            <li><button><span>52</span></button></li>
+            <li><button><span>53</span></button></li>
+            <li><button><span>54</span></button></li>
+            <li><button><span>55</span></button></li>
+            <li><button><span>56</span></button></li>
+            <li><button><span>57</span></button></li>
+            <li><button><span>58</span></button></li>
+            <li><button><span>59</span></button></li>
+            <li><button><span>60</span></button></li>
+            <li><button><span>61</span></button></li>
+            <li><button><span>62</span></button></li>
+            <li><button><span>63</span></button></li>
+            <li><button><span>64</span></button></li>
+            <li><button><span>65</span></button></li>
+            <li><button><span>66</span></button></li>
+            <li><button><span>67</span></button></li>
+            <li><button><span>68</span></button></li>
+            <li><button><span>69</span></button></li>
+            <li><button><span>70</span></button></li>
+            <li><button><span>71</span></button></li>
+            <li><button><span>72</span></button></li>
+            <li><button><span>73</span></button></li>
+            <li><button><span>74</span></button></li>
+            <li><button><span>75</span></button></li>
+            <li><button><span>76</span></button></li>
+            <li><button><span>77</span></button></li>
+            <li><button><span>78</span></button></li>
+            <li><button><span>79</span></button></li>
+            <li><button><span>80</span></button></li>
+            <li><button><span>81</span></button></li>
+            <li><button><span>82</span></button></li>
+            <li><button><span>83</span></button></li>
+            <li><button><span>84</span></button></li>
+            <li><button><span>85</span></button></li>
+            <li><button><span>86</span></button></li>
+            <li><button><span>87</span></button></li>
+            <li><button><span>88</span></button></li>
+            <li><button><span>89</span></button></li>
+            <li><button><span>90</span></button></li>
+            <li><button><span>91</span></button></li>
+            <li><button><span>92</span></button></li>
+            <li><button><span>93</span></button></li>
+            <li><button><span>94</span></button></li>
+            <li><button><span>95</span></button></li>
+            <li><button><span>96</span></button></li>
+            <li><button><span>97</span></button></li>
+            <li><button><span>98</span></button></li>
+            <li><button><span>99</span></button></li>
+            <li><button><span>100</span></button></li>
         </ul>
     </div>
     <script type="text/javascript">
-        function on(eventName, delegator_selector, selector, fn) {
-            let eleDelegator = document.querySelector(delegator_selector)
+        function on(eventName, delegateSelector, selector, fn) {
+            let eleDelegator = null
+            if (delegateSelector instanceof Element) {
+                eleDelegator = delegateSelector
+            } else {
+                eleDelegator = document.querySelector(delegateSelector) // 受委托元素或被委托元素 delegate
+            }
+
             eleDelegator.addEventListener(eventName, (e) => {
-                let ele = e.target
+                let ele = e.target // 委托元素（委托自己的事件给祖先元素） delegated
                 while (!ele.matches(selector)) {
-                    ele = ele.parentElement
                     if (ele === eleDelegator) {
+                        ele = null // 没有找到「委托元素」
                         break;
                     }
+                    ele = ele.parentNode
                 }
-                if (ele.matches(selector)) {
-                    // 设置回调函数的 this 指向委托的对象 li
-                    fn.call(ele, e)
-                }
-
+                // 回调函数的 this 指向委托元素 li
+                ele && fn.call(ele, e)
             })
+            return eleDelegator
         }
-        on('click', '#testDiv', 'li', function (e) {
-            console.log(this);
+        // 测试一：
+        // on('click', '#testDiv', 'li', function (e) {
+        //     console.log(this.innerHTML);
+        // })
+
+        // 测试二：
+        let divTest = document.querySelector('#testDiv')
+        on('click', divTest, 'li', function (e) {
+            console.log(this.innerHTML);
         })
     </script>
 </body>
