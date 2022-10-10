@@ -21,110 +21,21 @@
         <div class="spanWrapper">
             <span class="text">I am span</span>
         </div>
-        <ul>
-            <li><button><span>1</span></button></li>
-            <li><button><span>2</span></button></li>
-            <li><button><span>3</span></button></li>
-            <li><button><span>4</span></button></li>
-            <li><button><span>5</span></button></li>
-            <li><button><span>6</span></button></li>
-            <li><button><span>7</span></button></li>
-            <li><button><span>8</span></button></li>
-            <li><button><span>9</span></button></li>
-            <li><button><span>10</span></button></li>
-            <li><button><span>11</span></button></li>
-            <li><button><span>12</span></button></li>
-            <li><button><span>13</span></button></li>
-            <li><button><span>14</span></button></li>
-            <li><button><span>15</span></button></li>
-            <li><button><span>16</span></button></li>
-            <li><button><span>17</span></button></li>
-            <li><button><span>18</span></button></li>
-            <li><button><span>19</span></button></li>
-            <li><button><span>20</span></button></li>
-            <li><button><span>21</span></button></li>
-            <li><button><span>22</span></button></li>
-            <li><button><span>23</span></button></li>
-            <li><button><span>24</span></button></li>
-            <li><button><span>25</span></button></li>
-            <li><button><span>26</span></button></li>
-            <li><button><span>27</span></button></li>
-            <li><button><span>28</span></button></li>
-            <li><button><span>29</span></button></li>
-            <li><button><span>30</span></button></li>
-            <li><button><span>31</span></button></li>
-            <li><button><span>32</span></button></li>
-            <li><button><span>33</span></button></li>
-            <li><button><span>34</span></button></li>
-            <li><button><span>35</span></button></li>
-            <li><button><span>36</span></button></li>
-            <li><button><span>37</span></button></li>
-            <li><button><span>38</span></button></li>
-            <li><button><span>39</span></button></li>
-            <li><button><span>40</span></button></li>
-            <li><button><span>41</span></button></li>
-            <li><button><span>42</span></button></li>
-            <li><button><span>43</span></button></li>
-            <li><button><span>44</span></button></li>
-            <li><button><span>45</span></button></li>
-            <li><button><span>46</span></button></li>
-            <li><button><span>47</span></button></li>
-            <li><button><span>48</span></button></li>
-            <li><button><span>49</span></button></li>
-            <li><button><span>50</span></button></li>
-            <li><button><span>51</span></button></li>
-            <li><button><span>52</span></button></li>
-            <li><button><span>53</span></button></li>
-            <li><button><span>54</span></button></li>
-            <li><button><span>55</span></button></li>
-            <li><button><span>56</span></button></li>
-            <li><button><span>57</span></button></li>
-            <li><button><span>58</span></button></li>
-            <li><button><span>59</span></button></li>
-            <li><button><span>60</span></button></li>
-            <li><button><span>61</span></button></li>
-            <li><button><span>62</span></button></li>
-            <li><button><span>63</span></button></li>
-            <li><button><span>64</span></button></li>
-            <li><button><span>65</span></button></li>
-            <li><button><span>66</span></button></li>
-            <li><button><span>67</span></button></li>
-            <li><button><span>68</span></button></li>
-            <li><button><span>69</span></button></li>
-            <li><button><span>70</span></button></li>
-            <li><button><span>71</span></button></li>
-            <li><button><span>72</span></button></li>
-            <li><button><span>73</span></button></li>
-            <li><button><span>74</span></button></li>
-            <li><button><span>75</span></button></li>
-            <li><button><span>76</span></button></li>
-            <li><button><span>77</span></button></li>
-            <li><button><span>78</span></button></li>
-            <li><button><span>79</span></button></li>
-            <li><button><span>80</span></button></li>
-            <li><button><span>81</span></button></li>
-            <li><button><span>82</span></button></li>
-            <li><button><span>83</span></button></li>
-            <li><button><span>84</span></button></li>
-            <li><button><span>85</span></button></li>
-            <li><button><span>86</span></button></li>
-            <li><button><span>87</span></button></li>
-            <li><button><span>88</span></button></li>
-            <li><button><span>89</span></button></li>
-            <li><button><span>90</span></button></li>
-            <li><button><span>91</span></button></li>
-            <li><button><span>92</span></button></li>
-            <li><button><span>93</span></button></li>
-            <li><button><span>94</span></button></li>
-            <li><button><span>95</span></button></li>
-            <li><button><span>96</span></button></li>
-            <li><button><span>97</span></button></li>
-            <li><button><span>98</span></button></li>
-            <li><button><span>99</span></button></li>
-            <li><button><span>100</span></button></li>
-        </ul>
     </div>
     <script type="text/javascript">
+        let divTest = document.querySelector('#testDiv')
+        setTimeout(() => {
+            let template = document.createElement('template')
+            // 模拟某个操作，动态创建元素
+            template.innerHTML = '<ul></ul>'
+            for (let i = 1; i < 101; i++) {
+                let li = document.createElement('li')
+                li.innerHTML = `<button><span>${i}</span></button>`
+                template.content.firstElementChild.appendChild(li)
+            }
+            divTest.appendChild(template.content.firstElementChild)
+        }, 2000)
+
         function on(eventName, delegateSelector, selector, fn) {
             let eleDelegator = null
             if (delegateSelector instanceof Element) {
@@ -134,6 +45,7 @@
             }
 
             eleDelegator.addEventListener(eventName, (e) => {
+                // 1. 递归找到匹配选择器的委托元素
                 let ele = e.target // 委托元素（委托自己的事件给祖先元素） delegated
                 while (!ele.matches(selector)) {
                     if (ele === eleDelegator) {
@@ -142,7 +54,8 @@
                     }
                     ele = ele.parentNode
                 }
-                // 回调函数的 this 指向委托元素 li
+
+                // 2. 如果找到符合要求的委托元素，执行 fn 
                 ele && fn.call(ele, e)
             })
             return eleDelegator
@@ -153,7 +66,6 @@
         // })
 
         // 测试二：
-        let divTest = document.querySelector('#testDiv')
         on('click', divTest, 'li', function (e) {
             console.log(this.innerHTML);
         })
