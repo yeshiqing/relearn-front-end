@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style-type: none;
+        }
+
+        .listWrapper {
+            margin-top: 16px;
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid blue;
+            max-width: 900px;
+        }
+
+        .listWrapper>li {
+            margin-bottom: 16px;
+            padding: 0px 10px;
+            font-size: 2em;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 50%;
+        }
+
+        @media (min-width: 480px) {
+            .listWrapper>li {
+                flex-basis: 50%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .listWrapper>li {
+                flex-basis: 25%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .listWrapper>li {
+                /* 20% 比 160px 好，20% 不需要计算个数*/
+                flex-basis: 20%;
+            }
+        }
+
+        @media (min-width:1200px) {
+            .listWrapper>li {
+                flex-basis: 16.666667%;
+            }
+        }
+
+
+        .listWrapper>li>div {
+            border: 1px solid red;
+        }
+    </style>
+
+    <div>
+        <ul class="listWrapper">
+            <li>
+                <div>1</div>
+            </li>
+            <li>
+                <div>2</div>
+            </li>
+            <li>
+                <div>3</div>
+            </li>
+            <li>
+                <div>4</div>
+            </li>
+            <li>
+                <div>5</div>
+            </li>
+            <li>
+                <div>6</div>
+            </li>
+            <li>
+                <div>7</div>
+            </li>
+            <li>
+                <div>8</div>
+            </li>
+            <li>
+                <div>9</div>
+            </li>
+            <li>
+                <div>10</div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

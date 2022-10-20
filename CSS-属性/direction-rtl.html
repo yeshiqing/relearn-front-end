@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+
+<body>
+    <style>
+        blockquote {
+            direction: rtl;
+            /* 适用于从右往左写的语言，如阿拉伯语系 */
+            width: 300px;
+        }
+    </style>
+    <blockquote>
+        <p>This paragraph is in English but incorrectly goes right to left.</p>
+        <!-- 英语的标点符号从左边开始打，打错位置 -->
+        <!-- 用阿拉伯字母书写的语言都是从右往左，包括维吾尔语，哈萨克族，普什图语，波斯语等等 -->
+        <p>This paragraph is in English but incorrectly goes right to left ....</p>
+    </blockquote>
+    <p>This paragraph is in English but incorrectly goes right to left incorrecly.</p>
+</body>
+
+</html>
