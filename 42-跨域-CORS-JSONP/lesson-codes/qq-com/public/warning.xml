@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+    <warning>
+         Hello World 1
+    </warning>
+    <warning>
+         Hello World 2
+    </warning>
+    <warning>
+         Hello World 3
+    </warning>
+    <warning>
+         Hello World 4
+    </warning>
+</message>
