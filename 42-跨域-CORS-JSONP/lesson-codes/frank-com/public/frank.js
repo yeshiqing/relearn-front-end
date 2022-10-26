@@ -16,12 +16,12 @@ function ajax(method, url) {
 }
 
 // 方案一：CORS 实现跨域
-// ajax("get", "http://qq.com:8888/friends.json").then(response => {
-//     console.log("这是 AJAX");
-//     console.log(response);
-// }, () => {
-//     console.log('there is an error');
-// });
+ajax("get", "http://qq.com:8888/friends.json").then(response => {
+    console.log("这是 AJAX");
+    console.log(response);
+}, () => {
+    console.log('there is an error');
+});
 
 // 方案二：JSONP 实现跨域，后端返回一个全局变量
 function jsonp_globalVariable(url) {
