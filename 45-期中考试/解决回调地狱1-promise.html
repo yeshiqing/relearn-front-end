@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Promise 解决回调地狱</title>
+</head>
+
+<body>
+    <style>
+        ul,
+        ol {
+            list-style-type: none;
+        }
+
+        .wrapper .item {
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+        }
+    </style>
+    <ul class="wrapper">
+        <li class="item b1"></li>
+        <li class="item b2"></li>
+        <li class="item b3"></li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function moveTo(obj, left) {
+            const STRIDE = 2
+            const FREQUENCY = 10
+            // 创建一个promise实例，并传入两个函数参数，来设置promise的状态
+            return new Promise(function (resolve, reject) {
+                let leftPos = parseInt(obj.css('margin-left'));
+                if (leftPos !== left) {
+                    let timer = setInterval(() => {
+                        leftPos += STRIDE;
+                        obj.css('margin-left', leftPos);
+
+                        if (leftPos === left) {
+                            clearInterval(timer)
+                            resolve()   // 成功运动完成之后，返回一个状态resolved，then接收到后继续执行下一个回调
+                        }
+                    }, FREQUENCY)
+                } else {
+                    resolve()
+                }
+            })
+        }
+        // 采用promise链式操作的方式 通过传递状态的方式来调用回调函数
+        moveTo($('.b1'), 100)
+            .then(function () {                 // 当b1成功运动完成后，链式调用b2
+                return moveTo($('.b2'), 200)    // then函数返回的是一个新的promise对象，继续then
+            })
+            .then(function () {                // 当b2运动完成并且成功之后，链式调用b3
+                return moveTo($('.b3'), 300)
+            })
+    </script>
+</body>
+
+</html>
