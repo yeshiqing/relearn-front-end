@@ -1,0 +1,64 @@
+<!-- 偶发现象，多次刷新可以捕捉这个问题 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ol,
+        ul {
+            list-style-type: none;
+        }
+
+        body>.page {
+            display: flex;
+            flex-wrap: wrap;
+            /* 解开以下两句，不会再出现滚动条 */
+            /* width: 100vw;
+            height: 100vh; */
+        }
+
+        body>.page>section {
+            width: 50vw;
+            height: 50vh;
+        }
+
+        #app1 {
+            background-color: lightgrey;
+        }
+
+        #app2 {
+            background-color: rgb(12, 58, 007);
+        }
+
+        #app3 {
+            background-color: rgb(199, 131, 221);
+        }
+
+        #app4 {
+            background-color: rgb(244, 8, 98);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <section id="app1">
+        </section>
+        <section id="app2">
+        </section>
+        <section id="app3"></section>
+        <section id="app4"></section>
+    </div>
+</body>
+
+</html>

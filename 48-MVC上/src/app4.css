@@ -1,0 +1,31 @@
+#app4 {}
+
+@keyframes bcChange {
+    0% {
+        background: red;
+    }
+    20% {
+        background: orange;
+    }
+    25% {
+        background: yellow;
+    }
+    60% {
+        background: green;
+    }
+    80% {
+        background: blue;
+    }
+    100% {
+        background: blueviolet;
+    }
+}
+#app4 .circle {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+#app4 .circle.active {
+    animation: bcChange 3.6s linear alternate forwards infinite;
+}

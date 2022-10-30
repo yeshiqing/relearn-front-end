@@ -1,0 +1,67 @@
+#app1 {
+  width: 50vw;
+  height: 50vh;
+  border: 1px solid #0ff;
+}
+
+#app1 .actions {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#app1 .actions > button {
+  font-family: monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:after, :before {
+  box-sizing: border-box;
+}
+
+ol, ul {
+  list-style-type: none;
+}
+
+#app2 {
+  border: 1px solid purple;
+}
+
+#app2 > .tab-bar {
+  display: flex;
+}
+
+#app2 > .tab-bar > li {
+  border: 1px solid purple;
+  flex-grow: 1;
+}
+
+#app2 > .tab-bar > li.selected {
+  background-color: #0cfc7b;
+}
+
+#app2 > .content > li {
+  display: none;
+}
+
+#app2 > .content > li.active {
+  display: block;
+}
+
+body > .page {
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+body > .page > section {
+  width: 50vw;
+  height: 50vh;
+}
+
+/*# sourceMappingURL=index.2d7055af.css.map */
