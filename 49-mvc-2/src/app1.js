@@ -22,55 +22,44 @@ let v = {
             </div>
         </div>
     `,
-    init(container) {
-        v.container = $(container);
+    init(el) {
+        v.el = $(el);
         v.render();
     },
     render() {
-        if (v.el === null) {
-            v.el = $(v.html.replace('{{n}}', m.data.n))
-                .appendTo($(v.container));
-        } else {
-            let newEle = $(v.html.replace('{{n}}', m.data.n)) // 新创建的jQuery元素
-            v.el.replaceWith(newEle) // 用新创建的元素代替旧元素
-            v.el = newEle // 属性赋新值
+        if (v.el.children.length !== 0) {
+            v.el.empty()
         }
+        $(v.html.replace('{{n}}', m.data.n))
+            .appendTo(v.el)
     }
 };
 
 let c = {
-    init(container) {
-        v.init(container)
-        c.ui = {
-            button1: $("#add1"),
-            button2: $("#minus1"),
-            button3: $("#mul2"),
-            button4: $("#div2"),
-            $number: $("#number")
-        }
-        c.bindEvents()
+    init(el) {
+        v.init(el)
+        v.render(m.data.n)
+        c.autoBindEvents()
     },
-    bindEvents() {
-        v.container.on("click", '#add1', () => {
-            m.data.n += 1;
-            v.render()
-            localStorage.setItem("number", m.data.n);
-        });
-        v.container.on("click", '#minus1', () => {
-            m.data.n -= 1;
-            v.render()
-            localStorage.setItem("number", m.data.n);
-        });
-        v.container.on("click", '#mul2', () => {
-            m.data.n *= 2;
-            v.render()
-            localStorage.setItem("number", m.data.n);
-        });
-        v.container.on("click", '#div2', () => {
-            m.data.n /= 2;
-            v.render()
-            localStorage.setItem("number", m.data.n);
-        });
+    events: {
+        '#add1': 'add',
+        '#minus1': 'minus',
+        '#mul2': 'mul',
+        '#div2': 'div'
+    },
+    add() { m.data.n += 1; },
+    minus() { m.data.n -= 1; },
+    mul() { m.data.n *= 2; },
+    div() { m.data.n /= 2; },
+    autoBindEvents() {
+        for (let selector in c.events) {
+            let fn = c[c.events[selector]]
+            v.el.on('click', selector, () => {
+                fn()
+                v.render()
+                localStorage.setItem("number", m.data.n);
+            })
+        }
     }
 }
 
