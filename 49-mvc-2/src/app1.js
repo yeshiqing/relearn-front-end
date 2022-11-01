@@ -1,10 +1,19 @@
 import './app1.css';
 import $ from 'jquery';
 
+let eventBus = $(window) // m、v、c 对象间通信
+
 let m = {
     data: {
         n: parseInt(localStorage.getItem('number') || 100)
-    }
+    },
+    create() { },
+    delete() { },
+    update(data) {
+        Object.assign(m.data, data)
+        localStorage.setItem("number", m.data.n);
+        eventBus.trigger('m_updated')
+    },
 };
 
 let v = {
@@ -40,6 +49,9 @@ let c = {
         v.init(el)
         v.render(m.data.n)
         c.autoBindEvents()
+        eventBus.on('m_updated', () => { // 监听 m_updated 事件，trigger 时执行回调
+            v.render(m.data.n)
+        })
     },
     events: {
         '#add1': 'add',
@@ -47,21 +59,24 @@ let c = {
         '#mul2': 'mul',
         '#div2': 'div'
     },
-    add() { m.data.n += 1; },
-    minus() { m.data.n -= 1; },
-    mul() { m.data.n *= 2; },
-    div() { m.data.n /= 2; },
+    add() {
+        m.update({ n: m.data.n + 1 })
+    },
+    minus() {
+        m.update({ n: m.data.n - 1 })
+    },
+    mul() {
+        m.update({ n: m.data.n * 2 })
+    },
+    div() {
+        m.update({ n: m.data.n / 2 })
+    },
     autoBindEvents() {
         for (let selector in c.events) {
             let fn = c[c.events[selector]]
-            v.el.on('click', selector, () => {
-                fn()
-                v.render()
-                localStorage.setItem("number", m.data.n);
-            })
+            v.el.on('click', selector, fn)
         }
     }
 }
-
 
 export default c
