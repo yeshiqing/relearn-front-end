@@ -1,21 +1,21 @@
 #app2 {
     border: 1px solid purple;
 }
-#app2 > .tab-bar {
+#app2 .tab-bar {
     display: flex;
 }
-#app2 > .tab-bar > li {
+#app2 .tab-bar > li {
     border: 1px solid purple;
     flex-grow: 1;
     /* width: 50%; */
 }
-#app2 > .tab-bar > li.selected {
+#app2 .tab-bar > li.selected {
     background-color: rgba(12, 252, 123);
 }
-#app2 > .content {}
-#app2 > .content > li {
+#app2 .content {}
+#app2 .content > li {
     display: none;
 }
-#app2 > .content > li.active {
+#app2 .content > li.active {
     display: block;
 }
