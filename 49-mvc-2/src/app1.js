@@ -54,10 +54,10 @@ let c = {
         })
     },
     events: {
-        '#add1': 'add',
-        '#minus1': 'minus',
-        '#mul2': 'mul',
-        '#div2': 'div'
+        'click #add1': 'add',
+        'click #minus1': 'minus',
+        'click #mul2': 'mul',
+        'click #div2': 'div'
     },
     add() {
         m.update({ n: m.data.n + 1 })
@@ -72,9 +72,12 @@ let c = {
         m.update({ n: m.data.n / 2 })
     },
     autoBindEvents() {
-        for (let selector in c.events) {
-            let fn = c[c.events[selector]]
-            v.el.on('click', selector, fn)
+        for (let key in c.events) {
+            let spaceIndex = key.indexOf(' ')
+            let eventName = key.slice(0, spaceIndex)
+            let selector = key.slice(spaceIndex + 1)
+            let fn = c[c.events[key]]
+            v.el.on(eventName, selector, fn)
         }
     }
 }

@@ -548,9 +548,18 @@ parcelHelpers.defineInteropFlag(exports);
 var _app1Css = require("./app1.css");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
+let eventBus = (0, _jqueryDefault.default)(window) // m、v、c 对象间通信
+;
 let m = {
     data: {
         n: parseInt(localStorage.getItem("number") || 100)
+    },
+    create () {},
+    delete () {},
+    update (data) {
+        Object.assign(m.data, data);
+        localStorage.setItem("number", m.data.n);
+        eventBus.trigger("m_updated");
     }
 };
 let v = {
@@ -568,55 +577,58 @@ let v = {
             </div>
         </div>
     `,
-    init (container) {
-        v.container = (0, _jqueryDefault.default)(container);
+    init (el) {
+        v.el = (0, _jqueryDefault.default)(el);
         v.render();
     },
     render () {
-        if (v.el === null) v.el = (0, _jqueryDefault.default)(v.html.replace("{{n}}", m.data.n)).appendTo((0, _jqueryDefault.default)(v.container));
-        else {
-            let newEle = (0, _jqueryDefault.default)(v.html.replace("{{n}}", m.data.n)) // 新创建的jQuery元素
-            ;
-            v.el.replaceWith(newEle) // 用新创建的元素代替旧元素
-            ;
-            v.el = newEle // 属性赋新值
-            ;
-        }
+        if (v.el.children.length !== 0) v.el.empty();
+        (0, _jqueryDefault.default)(v.html.replace("{{n}}", m.data.n)).appendTo(v.el);
     }
 };
 let c = {
-    init (container) {
-        v.init(container);
-        c.ui = {
-            button1: (0, _jqueryDefault.default)("#add1"),
-            button2: (0, _jqueryDefault.default)("#minus1"),
-            button3: (0, _jqueryDefault.default)("#mul2"),
-            button4: (0, _jqueryDefault.default)("#div2"),
-            $number: (0, _jqueryDefault.default)("#number")
-        };
-        c.bindEvents();
+    init (el) {
+        v.init(el);
+        v.render(m.data.n);
+        c.autoBindEvents();
+        eventBus.on("m_updated", ()=>{
+            v.render(m.data.n);
+        });
     },
-    bindEvents () {
-        v.container.on("click", "#add1", ()=>{
-            m.data.n += 1;
-            v.render();
-            localStorage.setItem("number", m.data.n);
+    events: {
+        "click #add1": "add",
+        "click #minus1": "minus",
+        "click #mul2": "mul",
+        "click #div2": "div"
+    },
+    add () {
+        m.update({
+            n: m.data.n + 1
         });
-        v.container.on("click", "#minus1", ()=>{
-            m.data.n -= 1;
-            v.render();
-            localStorage.setItem("number", m.data.n);
+    },
+    minus () {
+        m.update({
+            n: m.data.n - 1
         });
-        v.container.on("click", "#mul2", ()=>{
-            m.data.n *= 2;
-            v.render();
-            localStorage.setItem("number", m.data.n);
+    },
+    mul () {
+        m.update({
+            n: m.data.n * 2
         });
-        v.container.on("click", "#div2", ()=>{
-            m.data.n /= 2;
-            v.render();
-            localStorage.setItem("number", m.data.n);
+    },
+    div () {
+        m.update({
+            n: m.data.n / 2
         });
+    },
+    autoBindEvents () {
+        for(let key in c.events){
+            let spaceIndex = key.indexOf(" ");
+            let eventName = key.slice(0, spaceIndex);
+            let selector = key.slice(spaceIndex + 1);
+            let fn = c[c.events[key]];
+            v.el.on(eventName, selector, fn);
+        }
     }
 };
 exports.default = c;
