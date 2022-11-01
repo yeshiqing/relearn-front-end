@@ -13,7 +13,6 @@ let m = {
     delete() { },
     update(data) {
         Object.assign(m.data, data)
-        console.dir(m.data);
         localStorage.setItem(LS_KEY_NUMBER, m.data.n);
         eventBus.trigger('m_updated')
     },
@@ -36,6 +35,7 @@ let v = {
     `,
     init(el) {
         v.el = $(el);
+        v.render(m.data.n)
     },
     render(n) {
         if (v.el.children.length !== 0) {
@@ -49,7 +49,6 @@ let v = {
 let c = {
     init(el) {
         v.init(el)
-        v.render(m.data.n)
         c.autoBindEvents()
         eventBus.on('m_updated', () => { // 监听 m_updated 事件，trigger 时执行回调
             v.render(m.data.n)

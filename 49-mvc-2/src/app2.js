@@ -21,11 +21,12 @@ let m = {
 let v = {
     el: null,
     html(index) {
-        return `
-        <div>
+        return `<div>
             <ol class="tab-bar">
-                <li class="${index === 0 ? 'selected' : ''}" data-index="0"> 页签1</li>
-                <li class="${index === 1 ? 'selected' : ''}" data-index="1"> 页签2</li>
+                <li class="${index === 0 ? 'selected' : ''}" 
+                data-index="0"> 页签1</li>
+                <li class="${index === 1 ? 'selected' : ''}" 
+                data-index="1"> 页签2</li>
             </ol >
             <ol class="content">
                 <li class="${index === 0 ? 'active' : ''}">内容1</li>
@@ -35,6 +36,7 @@ let v = {
     `},
     init(el) {
         v.el = $(el)
+        v.render(m.data.n)
     },
     render(index) {
         if (v.el.children.length !== 0) {
@@ -46,7 +48,6 @@ let v = {
 let c = {
     init(el) {
         v.init(el)
-        v.render(m.data.n)
         c.autoBindEvents()
         eventBus.on('m_updated', () => { // 监听 m_updated 事件，eventBus.trigger() 执行回调
             v.render(m.data.n)
