@@ -18,7 +18,7 @@ let m = new Model({
     }
 })
 
-let v = {
+let view = {
     el: null,
     html(index) {
         return `<div>
@@ -35,23 +35,18 @@ let v = {
         </div>
     `},
     init(el) {
-        v.el = $(el)
-        v.render(m.data.n)
+        view.el = $(el)
+        view.render(m.data.n)
+        view.autoBindEvents()
+        eventBus.on('m_updated', () => { // 监听 m_updated 事件，eventBus.trigger() 执行回调
+            view.render(m.data.n)
+        })
     },
     render(index) {
-        if (v.el.children.length !== 0) {
-            $(v.el).empty()
+        if (view.el.children.length !== 0) {
+            $(view.el).empty()
         }
-        $(v.html(index)).appendTo($(v.el))
-    }
-}
-let c = {
-    init(el) {
-        v.init(el)
-        c.autoBindEvents()
-        eventBus.on('m_updated', () => { // 监听 m_updated 事件，eventBus.trigger() 执行回调
-            v.render(m.data.n)
-        })
+        $(view.html(index)).appendTo($(view.el))
     },
     events: {
         'click .tab-bar li': 'selectTab',
@@ -62,14 +57,14 @@ let c = {
         m.update({ n: index })
     },
     autoBindEvents() {
-        for (let key in c.events) {
+        for (let key in view.events) {
             let spaceIndex = key.indexOf(' ')
             let eventName = key.slice(0, spaceIndex)
             let selector = key.slice(spaceIndex + 1)
-            let fn = c[c.events[key]]
-            v.el.on(eventName, selector, fn)
+            let fn = view[view.events[key]]
+            view.el.on(eventName, selector, fn)
         }
     }
 }
 
-export { c }
+export { view as c }

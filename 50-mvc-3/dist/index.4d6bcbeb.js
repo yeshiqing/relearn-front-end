@@ -544,7 +544,7 @@ var _app4Js = require("./app4.js");
 },{"./reset.css":"8XPx9","./global.css":"11axS","./app1.js":"gMhIk","./app2.js":"alK4Z","./app3.js":"264pe","./app4.js":"6ZENx"}],"8XPx9":[function() {},{}],"11axS":[function() {},{}],"gMhIk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "c", ()=>c);
+parcelHelpers.export(exports, "c", ()=>view);
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 var _app1Css = require("./app1.css");
@@ -555,7 +555,7 @@ let eventBus = (0, _jqueryDefault.default)({}) // m、v、c 对象间通信
 ;
 let m = new (0, _modelJs.Model)({
     data: {
-        n: parseInt(localStorage.getItem(LS_KEY_NUMBER)) || 100
+        n: parseFloat(localStorage.getItem(LS_KEY_NUMBER)) || 100
     },
     update (data) {
         Object.assign(m.data, data);
@@ -563,11 +563,7 @@ let m = new (0, _modelJs.Model)({
         eventBus.trigger("m_updated");
     }
 });
-let x = new (0, _viewJs.View)({
-    el: null
-});
-console.log(x);
-let v = {
+let view = {
     el: null,
     html: `
         <div>
@@ -583,21 +579,16 @@ let v = {
         </div>
     `,
     init (el) {
-        v.el = (0, _jqueryDefault.default)(el);
-        v.render(m.data.n);
+        view.el = (0, _jqueryDefault.default)(el);
+        view.render(m.data.n);
+        view.autoBindEvents();
+        eventBus.on("m_updated", ()=>{
+            view.render(m.data.n);
+        });
     },
     render (n) {
-        if (v.el.children.length !== 0) v.el.empty();
-        (0, _jqueryDefault.default)(v.html.replace("{{n}}", n)).appendTo(v.el);
-    }
-};
-let c = {
-    init (el) {
-        v.init(el);
-        c.autoBindEvents();
-        eventBus.on("m_updated", ()=>{
-            v.render(m.data.n);
-        });
+        if (view.el.children.length !== 0) view.el.empty();
+        (0, _jqueryDefault.default)(view.html.replace("{{n}}", n)).appendTo(view.el);
     },
     events: {
         "click #add1": "add",
@@ -626,12 +617,12 @@ let c = {
         });
     },
     autoBindEvents () {
-        for(let key in c.events){
+        for(let key in view.events){
             let spaceIndex = key.indexOf(" ");
             let eventName = key.slice(0, spaceIndex);
             let selector = key.slice(spaceIndex + 1);
-            let fn = c[c.events[key]];
-            v.el.on(eventName, selector, fn);
+            let fn = view[view.events[key]];
+            view.el.on(eventName, selector, fn);
         }
     }
 };
@@ -7481,7 +7472,7 @@ class View {
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"l2HTo"}],"alK4Z":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "c", ()=>c);
+parcelHelpers.export(exports, "c", ()=>view);
 var _app2Css = require("./app2.css");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
@@ -7499,7 +7490,7 @@ let m = new (0, _modelJs.Model)({
         eventBus.trigger("m_updated");
     }
 });
-let v = {
+let view = {
     el: null,
     html (index) {
         return `<div>
@@ -7517,21 +7508,16 @@ let v = {
     `;
     },
     init (el) {
-        v.el = (0, _jqueryDefault.default)(el);
-        v.render(m.data.n);
+        view.el = (0, _jqueryDefault.default)(el);
+        view.render(m.data.n);
+        view.autoBindEvents();
+        eventBus.on("m_updated", ()=>{
+            view.render(m.data.n);
+        });
     },
     render (index) {
-        if (v.el.children.length !== 0) (0, _jqueryDefault.default)(v.el).empty();
-        (0, _jqueryDefault.default)(v.html(index)).appendTo((0, _jqueryDefault.default)(v.el));
-    }
-};
-let c = {
-    init (el) {
-        v.init(el);
-        c.autoBindEvents();
-        eventBus.on("m_updated", ()=>{
-            v.render(m.data.n);
-        });
+        if (view.el.children.length !== 0) (0, _jqueryDefault.default)(view.el).empty();
+        (0, _jqueryDefault.default)(view.html(index)).appendTo((0, _jqueryDefault.default)(view.el));
     },
     events: {
         "click .tab-bar li": "selectTab"
@@ -7544,12 +7530,12 @@ let c = {
         });
     },
     autoBindEvents () {
-        for(let key in c.events){
+        for(let key in view.events){
             let spaceIndex = key.indexOf(" ");
             let eventName = key.slice(0, spaceIndex);
             let selector = key.slice(spaceIndex + 1);
-            let fn = c[c.events[key]];
-            v.el.on(eventName, selector, fn);
+            let fn = view[view.events[key]];
+            view.el.on(eventName, selector, fn);
         }
     }
 };

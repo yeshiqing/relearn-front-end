@@ -6,6 +6,7 @@ class View {
                 this[key] = options[key]
             }
         }
+
     }
 }
 

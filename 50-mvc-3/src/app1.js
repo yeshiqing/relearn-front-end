@@ -10,7 +10,7 @@ let eventBus = $({}) // m、v、c 对象间通信
 
 let m = new Model({
     data: {
-        n: parseInt(localStorage.getItem(LS_KEY_NUMBER)) || 100
+        n: parseFloat(localStorage.getItem(LS_KEY_NUMBER)) || 100
     },
     update(data) {
         Object.assign(m.data, data)
@@ -19,11 +19,7 @@ let m = new Model({
     }
 })
 
-let x = new View({
-    el: null
-})
-console.log(x);
-let v = {
+let view = {
     el: null,
     html: `
         <div>
@@ -39,25 +35,19 @@ let v = {
         </div>
     `,
     init(el) {
-        v.el = $(el);
-        v.render(m.data.n)
+        view.el = $(el)
+        view.render(m.data.n)
+        view.autoBindEvents()
+        eventBus.on('m_updated', () => { // 监听 m_updated 事件，trigger 时执行回调
+            view.render(m.data.n)
+        })
     },
     render(n) {
-        if (v.el.children.length !== 0) {
-            v.el.empty()
+        if (view.el.children.length !== 0) {
+            view.el.empty()
         }
-        $(v.html.replace('{{n}}', n))
-            .appendTo(v.el)
-    }
-};
-
-let c = {
-    init(el) {
-        v.init(el)
-        c.autoBindEvents()
-        eventBus.on('m_updated', () => { // 监听 m_updated 事件，trigger 时执行回调
-            v.render(m.data.n)
-        })
+        $(view.html.replace('{{n}}', n))
+            .appendTo(view.el)
     },
     events: {
         'click #add1': 'add',
@@ -78,14 +68,14 @@ let c = {
         m.update({ n: m.data.n / 2 })
     },
     autoBindEvents() {
-        for (let key in c.events) {
+        for (let key in view.events) {
             let spaceIndex = key.indexOf(' ')
             let eventName = key.slice(0, spaceIndex)
             let selector = key.slice(spaceIndex + 1)
-            let fn = c[c.events[key]]
-            v.el.on(eventName, selector, fn)
+            let fn = view[view.events[key]]
+            view.el.on(eventName, selector, fn)
         }
     }
 }
 
-export { c };
+export { view as c };
