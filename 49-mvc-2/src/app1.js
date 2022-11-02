@@ -3,8 +3,7 @@ import $ from 'jquery';
 
 const LS_KEY_NUMBER = 'number'
 
-let eventBus = $(window) // m、v、c 对象间通信
-
+let eventBus = $({}) // m、v、c 对象间通信
 let m = {
     data: {
         n: parseInt(localStorage.getItem(LS_KEY_NUMBER)) || 100
@@ -83,4 +82,4 @@ let c = {
     }
 }
 
-export default c
+export { c }

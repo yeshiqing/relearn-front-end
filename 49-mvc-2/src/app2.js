@@ -3,7 +3,7 @@ import $ from "jquery";
 
 const LS_KEY_TABINDEX = 'tabIndex'
 
-let eventBus = $(window)
+let eventBus = $({})
 
 let m = {
     data: {
@@ -72,4 +72,4 @@ let c = {
     }
 }
 
-export default c
+export { c }
