@@ -2,10 +2,11 @@ import './app2.css';
 import $ from "jquery";
 import { Model } from './base/Model.js'
 import { View } from './base/View.js'
+import { EventBus } from './base/EventBus.js'
 
 const LS_KEY_TABINDEX = 'tabIndex'
 
-let eventBus = $({})
+let eventBus = new EventBus()
 
 let m = new Model({
     data: {

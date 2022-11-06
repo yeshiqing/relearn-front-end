@@ -1,18 +1,16 @@
 import $ from 'jquery'
-class View {
+import { EventBus } from './EventBus'
+
+class View extends EventBus {
     constructor(options) {
-        // const PROP = ['el', 'html', 'init', 'render', 'data', 'eventbus', 'events']
-        // for (let key in options) {
-        //     if (PROP.includes(key)) {
-        //         this[key] = options[key]
-        //     }
-        // }
+        // 'el', 'html', 'init', 'render', 'data', 'eventbus', 'events'
+        super()
 
         Object.assign(this, options)
         this.el = $(this.el)
         this.render(this.data)
         this.autobindEvents()
-        this.eventBus.on('m_updated', () => {
+        this.on('m_updated', () => {
             this.render(this.data)
         })
     }

@@ -3,27 +3,25 @@ import './app1.css';
 import { Model } from './base/Model.js'
 import { View } from './base/View.js'
 
-
 const LS_KEY_NUMBER = 'number'
 
-let eventBus = $({}) // m、v、c 对象间通信
 
-let m = new Model({
-    data: {
-        n: parseFloat(localStorage.getItem(LS_KEY_NUMBER)) || 100
-    },
-    update(data) {
-        Object.assign(m.data, data)
-        localStorage.setItem(LS_KEY_NUMBER, m.data.n);
-        eventBus.trigger('m_updated')
-    }
-})
 
 let init = (el) => {
+    let m = new Model({
+        data: {
+            n: parseFloat(localStorage.getItem(LS_KEY_NUMBER)) || 100
+        },
+        update(data) {
+            Object.assign(m.data, data)
+            localStorage.setItem(LS_KEY_NUMBER, m.data.n);
+            m.trigger('m_updated')
+        }
+    })
+
     new View({
         el: el,
         data: m.data,
-        eventBus: eventBus,
         html: `
             <div>
                 <div class="output">
