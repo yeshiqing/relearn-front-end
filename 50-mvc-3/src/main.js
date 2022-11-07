@@ -1,8 +1,10 @@
 import './reset.css';
 import './global.css';
 
-import { init as init_app1 } from './app1.js';
-import { init as init_app2 } from './app2.js';
+// import { init as init_app1 } from './app1.js';
+// import { init as init_app2 } from './app2.js';
+import { init as init_app1 } from './app1-vue.js';
+import { init as init_app2 } from './app2-vue.js';
 import './app3.js';
 import './app4.js';
 
