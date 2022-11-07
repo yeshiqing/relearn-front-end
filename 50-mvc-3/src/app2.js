@@ -6,23 +6,22 @@ import { EventBus } from './base/EventBus.js'
 
 const LS_KEY_TABINDEX = 'tabIndex'
 
-let eventBus = new EventBus()
-
 let m = new Model({
+    app: 'app2',
     data: {
         index: parseInt(localStorage.getItem(LS_KEY_TABINDEX)) || 0
     },
     update(data) {
         Object.assign(m.data, data)
         localStorage.setItem(LS_KEY_TABINDEX, m.data.index);
-        eventBus.trigger('m_updated')
+        m.trigger('m_updated')
     }
 })
 
 let init = (el) => {
     new View({
         el: el,
-        eventBus: eventBus,
+        app: 'app2',
         data: m.data,
         html(index) {
             return `<div>

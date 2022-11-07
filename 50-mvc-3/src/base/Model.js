@@ -2,7 +2,7 @@ import { EventBus } from "./EventBus"
 
 class Model extends EventBus {
     constructor(options) {
-        super()
+        super(options.app)
 
         const PROPS = ['data', 'create', 'delete', 'update', 'get']
         for (let key in options) {

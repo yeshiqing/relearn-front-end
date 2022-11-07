@@ -4,7 +4,7 @@ import { EventBus } from './EventBus'
 class View extends EventBus {
     constructor(options) {
         // 'el', 'html', 'init', 'render', 'data', 'eventbus', 'events'
-        super()
+        super(options.app)
 
         Object.assign(this, options)
         this.el = $(this.el)
