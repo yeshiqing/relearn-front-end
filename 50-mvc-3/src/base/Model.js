@@ -2,9 +2,9 @@ import { EventBus } from "./EventBus"
 
 class Model extends EventBus {
     constructor(options) {
-        super(options.app)
+        super(options)
 
-        const PROPS = ['data', 'create', 'delete', 'update', 'get']
+        const PROPS = ['data', 'create', 'delete', 'update', 'get', 'app']
         for (let key in options) {
             if (PROPS.includes(key)) {
                 this[key] = options[key]

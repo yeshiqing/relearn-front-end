@@ -7,7 +7,7 @@ import { EventBus } from './base/EventBus.js'
 const LS_KEY_TABINDEX = 'tabIndex'
 
 let m = new Model({
-    app: 'app2',
+    appName: 'app2',
     data: {
         index: parseInt(localStorage.getItem(LS_KEY_TABINDEX)) || 0
     },
@@ -21,7 +21,7 @@ let m = new Model({
 let init = (el) => {
     new View({
         el: el,
-        app: 'app2',
+        appName: 'app2',
         data: m.data,
         html(index) {
             return `<div>

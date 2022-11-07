@@ -6,7 +6,7 @@ import { View } from './base/View.js'
 const LS_KEY_NUMBER = 'number'
 
 let m = new Model({
-    "app": "app1",
+    appName: "app1",
     data: {
         n: parseFloat(localStorage.getItem(LS_KEY_NUMBER)) || 100
     },
@@ -19,7 +19,7 @@ let m = new Model({
 
 let init = (el) => {
     new View({
-        "app": "app1",
+        appName: "app1",
         el: el,
         data: m.data,
         html: `
